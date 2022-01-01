@@ -2,6 +2,8 @@ import extra_data as ed
 
 #Ficheiro com pequenas funçoes.
 
+# Passa de DataFrama para Listas, e depois transforma para dicionarios com a forma correta
+
 def dataframe_to_list(df):
     lista = df.values.tolist()
     return lista
@@ -19,11 +21,13 @@ def dic_predicts(predictions):
         p[i[0]] = {"ref": i[0], "comp": i[1].lower(), "torneio": i[2], "data": i[3], "ronda": i[4], "j1": i[5], "j2": i[6], "odd": i[7], "bet": i[8], "resultado": i[9]}
     return p
 
+#Cria as páginas de HTML de forma automatica (só código, o .exe é noutros ficheiros)
+
 def torneio_html(t):
 
     txt = f"""
     <li class= "torneio">
-        <a href="/torneios/{t["comp"]}/{t["ref"]}.html">
+        <a href="torneios/{t["comp"]}/{t["ref"]}.html">
             <img src="https://flagpedia.net/data/flags/w1160/{ed.p_flag[t["pais"]]}.png" alt="{t["pais"]}">
             <p class="estado {ed.estados_dict[t['estado']]}">{t["estado"]}</p>
             <p class="torneio-name">{t["nome"]}</p>
@@ -55,7 +59,7 @@ def prediction_html(p):
 
 def torneio_individual(torneio, predicts):
 
-    f = open(f'/Users/tiago/Documents/Programacao/Crash Front-End/torneios/{torneio[0]}/{torneio[1]}.html','w')
+    f = open(f'torneios/{torneio[0]}/{torneio[1]}.html','w')
 
     lista = ""
 
