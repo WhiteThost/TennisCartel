@@ -2,9 +2,6 @@ import pandas as pd
 import extra_functions as ef
 from extra_data import excel_path
 
-
-
-
 def torneios_individuais():
  
     df = pd.read_excel(io = excel_path, sheet_name = f"ATP - Torneios")
